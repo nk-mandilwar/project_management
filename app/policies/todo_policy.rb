@@ -33,4 +33,8 @@ class TodoPolicy < ApplicationPolicy
   def update?
     user.admin?
   end
+
+  def update_status?
+    user.developer? && record.developer == user
+  end
 end

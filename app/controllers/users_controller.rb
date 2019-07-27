@@ -43,6 +43,10 @@ class UsersController < ApplicationController
 
   def set_developer
     @developer = User.find_by_id params[:id]
+    if @developer.blank?
+      flash[:alert] = "Developer does not exist"
+      redirect_to root_path and return
+    end
   end
 
   def user_params

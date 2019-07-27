@@ -37,10 +37,7 @@ class TodosController < ApplicationController
   end
 
   def update_status
-    if @todo.developer != current_user
-      flash[:alert] = "Unauthorized"
-      redirect_to orders_path and return
-    end
+    authorize @todo
     if @todo.progress?
       @todo.status = "done"
     elsif @todo.open?
@@ -55,6 +52,10 @@ class TodosController < ApplicationController
 
   def set_todo
     @todo = Todo.find_by_id params[:id]
+    if @todo.blank?
+      flash[:alert] = "Todo does not exist"
+      redirect_to todos_path and return
+    end
   end
 
   def new_todo_params

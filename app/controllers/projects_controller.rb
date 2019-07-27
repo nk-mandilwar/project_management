@@ -58,6 +58,10 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find_by_id params[:id]
+    if @project.blank?
+      flash[:alert] = "Project does not exist"
+      redirect_to root_path and return
+    end
   end
 
   def project_params
