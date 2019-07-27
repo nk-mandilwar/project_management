@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-12">
+      <h2> Todos List </h2>
+    </div>
+    <div class="col-12">
+      <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Project</th>
+            <th>Created By</th>
+            <% if current_user.admin? %>
+              <th>Assigned Developer</th>
+            <% end %>
+            <th>Status</th>
+            <% if current_user.developer? %>
+              <th>Update Status</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @todos.each do |todo| %>
+            <tr>
+              <td><%= todo.name %> </td>
+              <td><%= todo.project.name %> </td>
+              <td><%= todo.creator.employee_id %> </td>
+              <% if current_user.admin? %>
+                <td><%= todo.developer.try(:employee_id) %> </td>
+              <% end %> 
+              <td><%= todo.status %></td>
+              <% if current_user.developer? && !todo.done? %>
+                <td><%= link_to "Update", update_status_todo_path(todo), method: :post %></td>
+              <% end %>
+            </tr>
+          <% end %>     
+        </tbody>
+      </table>  
+    </div>
+    <%= render 'shared/paginate', resource: @todos %>
+  </div>
+</div>

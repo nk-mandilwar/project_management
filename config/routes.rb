@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       post :add_developers
     end
   end
-  resources :todos, except: [:new, :show, :delete]
+  resources :todos, except: [:new, :show, :delete] do
+    member do
+      post :update_status
+    end
+  end
   resources :users, except: [:show, :delete] 
   root 'dashboard#index'
 end

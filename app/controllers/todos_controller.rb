@@ -4,6 +4,7 @@ class TodosController < ApplicationController
 
   def index
     authorize :todo 
+    @todos = TodoPolicy::Scope.new(pundit_user, "todo").resolve(params)
   end
 
   def create
@@ -33,6 +34,21 @@ class TodosController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def update_status
+    if @todo.developer != current_user
+      flash[:alert] = "Unauthorized"
+      redirect_to orders_path and return
+    end
+    if @todo.progress?
+      @todo.status = "done"
+    elsif @todo.open?
+      @todo.status = "progress"
+    end
+    @todo.save
+    flash[:notice] = "Status updated successfully"
+    redirect_to todos_path 
   end
 
   private

@@ -1,12 +1,21 @@
 class TodoPolicy < ApplicationPolicy
   class Scope < Scope
-    def resolve
-      scope.all
+    def resolve(params)
+      method_name = "resolve_for_#{user.role.internal_identifier}".to_sym
+      send(method_name, params)
+    end
+
+    def resolve_for_admin params
+      Todo.all.includes(:project, :creator, :developer).page(params[:page])
+    end
+
+    def resolve_for_developer params
+      user.tasks.includes(:project, :creator).page(params[:page])
     end
   end
 
   def index?
-    user.admin?
+    user.admin? || user.developer?
   end
 
   def new?
