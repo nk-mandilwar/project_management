@@ -11,8 +11,19 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/header' %>
+    
+    <% if !flash[:notice].blank? %>
+      <div id="flash_notice" class="alert alert-success">
+        <div id="notice" class="notice"><%= flash[:notice] %></div>
+      </div>
+    <% end %>
+
+    <% if !flash[:alert].blank? %>
+      <div id="flash_alert" class="alert alert-danger">
+        <div id="alert" class="error"><%= flash[:alert] %></div>
+      </div>
+    <% end %>
 
     <%= yield %>
   </body>

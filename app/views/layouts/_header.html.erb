@@ -1,0 +1,43 @@
+<%
+  dashboard_active = controller.controller_name == 'dashboard' ? '' : 'active' 
+  users_active = controller.controller_name == 'users' ? '' : 'active'
+  projects_active = controller.controller_name == 'projects' ? '' : 'active'
+  todos_active = controller.controller_name == 'todos' ? '' : 'active'
+  edit_password_active = controller.controller_name == 'registrations' && controller.action_name == 'edit' ? '' : 'active'
+%>
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary navbar-custom">
+  <a class="navbar-brand" href="#">Our Project Management</a>
+  <% if current_user %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mr-auto">
+        <% if current_user.admin? %>
+          <li class="nav-item <%= dashboard_active %>">
+            <%= link_to 'Dashboard', root_path, class: "nav-link"  %>
+          </li>
+          <li class="nav-item <%= users_active %>">
+            <%= link_to 'Users', users_path, class: "nav-link"  %>
+          </li>
+          <li class="nav-item <%= projects_active %>">
+            <%= link_to 'Projects', projects_path, class: "nav-link"  %>
+          </li>
+        <% end %>
+        <li class="nav-item <%= todos_active %>">
+          <%= link_to 'Todos', todos_path, class: "nav-link"  %>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item <%= edit_password_active %>">
+          <%= link_to 'Change Password', edit_user_registration_path, class: "nav-link"  %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link"  %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</nav>
