@@ -1,0 +1,28 @@
+<%= form_for @developer do |f| %>
+  
+  <%= render 'devise/shared/error_messages', resource: @developer %>
+
+  <label>
+    <span>Employee Id</span>
+    <%= f.text_field :employee_id, placeholder: 'Employee Id' %>
+  </label>
+
+  <label>
+    <span>Email</span>
+    <%= f.text_field :email, placeholder: 'Email' %>
+  </label>
+  
+  <label>
+    <span>Password</span>
+    <%= f.password_field :password, placeholder: 'Password', value: '' %>
+  </label>
+
+  <label>
+    <span>Password Confirmation</span>
+    <%= f.password_field :password_confirmation, placeholder: 'Password Confirmation', value: '' %>
+  </label>
+
+  <div class="btn-sub">
+    <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :set_project, except: [:index, :new]
+  before_action :set_project, except: [:index, :new, :create]
 
   def index
     authorize :project  
@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    authorize @project
+    authorize :project
   end
 
   def edit
@@ -34,5 +34,6 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find_by_id params[:id]
+  end
 
 end

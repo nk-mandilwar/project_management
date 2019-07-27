@@ -7,16 +7,6 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <label>
-          <span>Name</span>
-          <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
-        </label>
-
-        <label>
-          <span>Phone</span>
-          <%= f.text_field :phone, autofocus: true, autocomplete: "email" %>
-        </label>
-
-        <label>
           <span>Email</span>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </label>
