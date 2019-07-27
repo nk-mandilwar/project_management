@@ -1,0 +1,13 @@
+<%= form_for @project do |f| %>
+  
+  <%= render 'devise/shared/error_messages', resource: @project %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: 'Employee Id', class: "form-control" %>
+  </div>
+
+  <div class="btn-sub">
+    <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-6">
+      <h2> Edit Project </h2>
+    </div>
+    <div class="col-6">
+      <%= link_to "Add Developer", get_developers_project_path(@project), class: "btn btn-success float-right btn-width" %>
+    </div>
+    <div class="col-6">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :projects, except: [:show, :delete] do 
     member do
-      get :developers
-      post :add_developer
+      get :get_developers
+      post :add_developers
     end
   end
   resources :todos, except: [:new, :show, :delete]

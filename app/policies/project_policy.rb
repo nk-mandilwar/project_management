@@ -13,7 +13,7 @@ class ProjectPolicy < ApplicationPolicy
     user.admin?
   end
 
-  def create
+  def create?
     user.admin?
   end
 
@@ -26,10 +26,10 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def get_developers?
-    user.admin?
+    user.admin? && record.creator == user
   end
 
-  def add_developers
-    user.admin?
+  def add_developers?
+    user.admin? && record.creator == user
   end
 end

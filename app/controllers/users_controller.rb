@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     developer_role = Role.find_by_internal_identifier 'developer'
     @developer.role_id = developer_role.id
     if @developer.save
-      flash[:notice] = 'Developer added successfully'
+      flash[:notice] = 'Developer created successfully'
       redirect_to edit_user_path(@developer)
     else
       render 'new'
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Developer updated successfully'
       redirect_to edit_user_path(@developer)
     else
-      render 'new'
+      render 'edit'
     end
   end
 

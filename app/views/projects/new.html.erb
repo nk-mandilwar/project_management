@@ -1,0 +1,20 @@
+<section class="form-inner">
+  <div class="form-middle">
+    <div class="form-details">
+      <h2>Add Project</h2>
+
+      <%= form_for @project do |f| %>
+        <%= render 'devise/shared/error_messages', resource: @project %>
+
+        <label>
+          <span>Name</span>
+          <%= f.text_field :name, placeholder: 'Employee Id' %>
+        </label>
+
+        <div class="btn-sub">
+          <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
