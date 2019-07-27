@@ -1,0 +1,26 @@
+<section class="form-inner">
+  <div class="form-middle">
+    <div class="form-details">
+      <h2>Edit Todo</h2>
+
+      <%= form_for @todo do |f| %>
+  
+        <%= render 'devise/shared/error_messages', resource: @todo %>
+
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, placeholder: 'Name', class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :assign_developer %>
+          <%= f.select :developer_id, options_for_select(@developers), {}, class: "form-control" %>
+        </div>
+
+        <div class="btn-sub">
+          <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

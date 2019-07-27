@@ -26,13 +26,15 @@ class ProjectsController < ApplicationController
 
   def edit
     authorize @project
+    @todo = Todo.new
+    @todos = @project.todos.includes(:creator, :developer)
   end
 
   def update
     authorize @project
     if @project.update_attributes(project_params)
       flash[:notice] = 'Project updated successfully'
-      redirect_to edit_project_path(@developer)
+      redirect_to edit_project_path(@project)
     else
       render 'edit'
     end

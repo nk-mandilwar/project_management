@@ -7,7 +7,14 @@
       <%= link_to "Add Developer", get_developers_project_path(@project), class: "btn btn-success float-right btn-width" %>
     </div>
     <div class="col-6">
-      <%= render 'form' %>
+      <%= render 'projects/form' %>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-6 mt-5">
+      <%= render "todos/new_todo_form", project: @project %>
+    </div>
+    <div class="col-12 mt-5">
+      <%= render "todos/list", todos: @todos %>
     </div>
   </div>
 </div>

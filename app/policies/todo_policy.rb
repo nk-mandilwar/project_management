@@ -1,4 +1,9 @@
-class UserPolicy < ApplicationPolicy
+class TodoPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end
 
   def index?
     user.admin?
@@ -13,11 +18,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin? && record.developer?
+    user.admin?
   end
 
   def update?
-    user.admin? && record.developer?
+    user.admin?
   end
-
 end

@@ -1,0 +1,24 @@
+<h4>Todos List</h4>
+
+<table class="table table-striped table-bordered" style="width:100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created By</th>
+      <th>Assigned Developer</th>
+      <th>Status</th>
+      <th>Assign Developer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% todos.each do |todo| %>
+      <tr>
+        <td><%= link_to todo.name, edit_todo_path(todo) %> </td>
+        <td><%= todo.creator.employee_id %> </td>
+        <td><%= todo.developer.try(:employee_id) %> </td> 
+        <td><%= todo.status %></td>
+        <td><%= link_to "Assign", edit_todo_path(todo) %> </td>
+      </tr>
+    <% end %>     
+  </tbody>
+</table>

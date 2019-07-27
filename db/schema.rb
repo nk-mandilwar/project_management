@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_27_081100) do
+ActiveRecord::Schema.define(version: 2019_07_27_183053) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_07_27_081100) do
     t.integer "project_id"
     t.integer "creator_id"
     t.integer "developer_id"
+    t.integer "status", default: 0
     t.index ["creator_id"], name: "index_todos_on_creator_id"
     t.index ["developer_id"], name: "index_todos_on_developer_id"
     t.index ["name"], name: "index_todos_on_name", unique: true
