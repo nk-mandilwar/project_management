@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     authorize :project  
-    @projects = Project.includes(:creator).page(params[:page])
+    @projects = Project.includes(:creator).order(created_at: :desc).page(params[:page])
   end
 
   def new

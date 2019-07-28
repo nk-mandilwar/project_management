@@ -21,15 +21,13 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
-  protected 
+  private
 
   def configure_permitted_parameters
     added_attrs = [:email, :password, :password_confirmation, :remember_me]
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
-
-  private
 
   def user_not_authorized
     flash[:alert] = "Unauthorized"

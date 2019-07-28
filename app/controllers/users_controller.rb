@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     authorize :user 
     developer_role = Role.find_by_internal_identifier 'developer'
-    @developers = User.where(role_id: developer_role.id).page(params[:page])
+    @developers = User.where(role_id: developer_role.id).order(created_at: :desc).page(params[:page])
   end
 
   def new

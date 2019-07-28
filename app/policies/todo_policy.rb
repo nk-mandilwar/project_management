@@ -6,11 +6,11 @@ class TodoPolicy < ApplicationPolicy
     end
 
     def resolve_for_admin params
-      Todo.all.includes(:project, :creator, :developer).page(params[:page])
+      Todo.all.includes(:project, :creator, :developer).order(created_at: :desc).page(params[:page])
     end
 
     def resolve_for_developer params
-      user.tasks.includes(:project, :creator).page(params[:page])
+      user.tasks.includes(:project, :creator).order(created_at: :desc).page(params[:page])
     end
   end
 
