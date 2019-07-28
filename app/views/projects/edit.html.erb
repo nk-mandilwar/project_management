@@ -4,7 +4,9 @@
       <h2> Edit Project </h2>
     </div>
     <div class="col-6">
-      <%= link_to "Add Developer", get_developers_project_path(@project), class: "btn btn-success float-right btn-width" %>
+      <% if policy(@project).get_developers? %>
+        <%= link_to "Add Developer", get_developers_project_path(@project), class: "btn btn-success float-right btn-width" %>
+      <% end %>
     </div>
     <div class="col-6">
       <%= render 'projects/form' %>

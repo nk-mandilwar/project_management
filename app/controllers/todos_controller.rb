@@ -30,7 +30,7 @@ class TodosController < ApplicationController
     authorize @todo
     if @todo.update_attributes(update_todo_params)
       flash[:notice] = 'Todo updated successfully'
-      redirect_to edit_todo_path(@todo)
+      redirect_to edit_project_path(@todo.project)
     else
       render 'edit'
     end

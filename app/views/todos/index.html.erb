@@ -28,7 +28,7 @@
               <% if current_user.admin? %>
                 <td><%= todo.developer.try(:employee_id) %> </td>
               <% end %> 
-              <td><%= todo.status %></td>
+              <td><%= show_status(todo) %></td>
               <% if current_user.developer? && !todo.done? %>
                 <td><%= link_to "Update", update_status_todo_path(todo), method: :post %></td>
               <% end %>

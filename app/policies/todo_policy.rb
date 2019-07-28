@@ -27,14 +27,14 @@ class TodoPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin?
+    user.admin? && !record.done?
   end
 
   def update?
-    user.admin?
+    user.admin? && !record.done?
   end
 
   def update_status?
-    user.developer? && record.developer == user
+    user.developer? && record.developer == user && !record.done?
   end
 end

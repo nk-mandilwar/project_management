@@ -13,11 +13,11 @@
   <tbody>
     <% todos.each do |todo| %>
       <tr>
-        <td><%= link_to todo.name, edit_todo_path(todo) %> </td>
+        <td><%= edit_todo_link(todo, todo.name) %></td>
         <td><%= todo.creator.employee_id %> </td>
         <td><%= todo.developer.try(:employee_id) %> </td> 
-        <td><%= todo.status %></td>
-        <td><%= link_to "Assign", edit_todo_path(todo) %> </td>
+        <td><%= show_status(todo) %></td>
+        <td><%= edit_todo_link(todo, 'Assign') %> </td>
       </tr>
     <% end %>     
   </tbody>
