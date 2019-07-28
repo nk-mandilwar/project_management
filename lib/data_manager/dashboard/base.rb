@@ -10,8 +10,9 @@ module DataManager
         super(page-1, limit)
       end
 
-      def self.project_todo_list(params)
-        super(params)
+      def self.project_todo_list(page, limit)
+        page = 1 if page.blank?
+        super(page-1, limit)
       end
     end #Utility end
   end #Dashboard end

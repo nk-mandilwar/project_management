@@ -1,0 +1,31 @@
+        <tbody>
+          <tr>
+            <th>Done</th>
+            <% @data.each do |data| %>
+              <td><%= done_todos(data["todos_statuses"]) %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th>In Progress</th>
+            <% @data.each do |data| %>
+              <td><%= progress_todos(data["todos_statuses"]) %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th>New</th>
+            <% @data.each do |data| %>
+              <td><%= new_todos(data["todos_statuses"]) %></td>
+            <% end %>
+          </tr>    
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12">
+      <% if @next_page.present? %>
+        <%= link_to "Next Page", root_path(page: @next_page), class: "btn btn-success float-right btn-width" %>
+      <% end %>
+      <% if @prev_page.present? %>
+        <%= link_to "Previous Page", root_path(page: @prev_page), class: "btn btn-success float-right btn-width mr-1" %>
+      <% end %>
+  </div>
+</div>

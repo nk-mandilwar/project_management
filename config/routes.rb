@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users, except: [:show, :delete] 
+  get 'project_todos_status', to: 'dashboard#project_todos_status'
   root 'dashboard#index'
 end
