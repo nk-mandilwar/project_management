@@ -4,7 +4,7 @@ class DashboardPolicy < Struct.new(:user, :dashboard)
     user.admin?
   end
 
-  def project_todos_status?
+  def projects_todos_status?
     user.admin?
   end
 

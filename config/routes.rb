@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do
       get :get_developers
       post :add_developers
+      get :view_piechart
+      get :piechart_data
     end
   end
   resources :todos, except: [:new, :show, :delete] do
@@ -17,6 +19,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users, except: [:show, :delete] 
-  get 'project_todos_status', to: 'dashboard#project_todos_status'
+  get 'projects_todos_status', to: 'dashboard#projects_todos_status'
   root 'dashboard#index'
 end

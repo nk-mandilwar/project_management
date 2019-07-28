@@ -14,3 +14,13 @@
           </tr>
         </thead>
         <%= render 'todos_status' %>
+
+    <div class="col-12">
+      <% if @next_page.present? %>
+        <%= link_to "Next Page", projects_todos_status_path(page: @next_page), class: "btn btn-success float-right btn-width" %>
+      <% end %>
+      <% if @prev_page.present? %>
+        <%= link_to "Previous Page", projects_todos_status_path(page: @prev_page), class: "btn btn-success float-right btn-width mr-1" %>
+      <% end %>
+  </div>
+</div>

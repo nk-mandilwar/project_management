@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-6">
-      <h2> Developers </h2>
+      <h2> Projects </h2>
     </div>
     <div class="col-6">
       <%= link_to "Add Project", new_project_path, class: "btn btn-success float-right btn-width" %>
@@ -12,6 +12,7 @@
           <tr>
             <th>Name</th>
             <th>Created By</th>
+            <th>Piechart For Status</th>
           </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
             <tr>
               <td><%= link_to project.name, edit_project_path(project) %> </td>
               <td><%= project.creator.employee_id %> </td> 
+              <td><%= link_to "Piechart", view_piechart_project_path(project) %> </td>
             </tr>
           <% end %>     
         </tbody>

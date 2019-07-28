@@ -54,6 +54,20 @@ class ProjectsController < ApplicationController
     redirect_to edit_project_path(@project)
   end
 
+  def view_piechart
+  end
+
+  def piechart_data
+    statuses = @project.todos.pluck(:status)
+    status_set = ['open', 'progress', 'done']
+    piechart_data = [['Status', 'Pending Todo']]
+    status_set.each do |status|
+      data = [status, statuses.count(status)]
+      piechart_data << data
+    end
+    render json: {piechart_data: piechart_data}
+  end
+
   private
 
   def set_project

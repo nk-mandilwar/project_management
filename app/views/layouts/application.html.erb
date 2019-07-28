@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %>-<%= action_name %>">
     <%= render 'layouts/header' %>
     
     <% if !flash[:notice].blank? %>
@@ -26,5 +25,7 @@
     <% end %>
 
     <%= yield %>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

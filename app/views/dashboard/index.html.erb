@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-12">
-      <%= link_to "Projects Todos Status", project_todos_status_path, class: "btn btn-success float-right mb-3" %>
+      <%= link_to "Projects Todos Status", projects_todos_status_path, class: "btn btn-success float-right mb-3" %>
     </div>
     <div class="col-12">
       <table class="table table-striped table-bordered" style="width:100%">
@@ -14,4 +14,14 @@
           </tr>
         </thead>
         <%= render 'todos_status' %>
+
+    <div class="col-12">
+      <% if @next_page.present? %>
+        <%= link_to "Next Page", root_path(page: @next_page), class: "btn btn-success float-right btn-width" %>
+      <% end %>
+      <% if @prev_page.present? %>
+        <%= link_to "Previous Page", root_path(page: @prev_page), class: "btn btn-success float-right btn-width mr-1" %>
+      <% end %>
+  </div>
+</div>        
         

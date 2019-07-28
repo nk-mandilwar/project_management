@@ -27,4 +27,12 @@ class ProjectPolicy < ApplicationPolicy
   def add_developers?
     user.admin? && record.creator == user
   end
+
+  def viwe_piechart?
+    user.admin?
+  end
+
+  def piechart_data?
+    user.admin?
+  end
 end

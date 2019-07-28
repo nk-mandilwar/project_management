@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
     @data = ::DataManager::Dashboard::Utility.developer_todo_list(params[:page], DEFAULT_LIMIT)
   end
 
-  def project_todos_status
+  def projects_todos_status
     authorize :dashboard, :index?
     set_nextpage_prevpage_for_project
     @data = ::DataManager::Dashboard::Utility.project_todo_list(params[:page], DEFAULT_LIMIT)
